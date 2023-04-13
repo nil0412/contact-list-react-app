@@ -9,7 +9,7 @@ class ContactEdit extends React.Component {
 			<div className="app-container">
 				<div className="contact-list-heading">
 					<NavLink to="/">
-						<i class="fa-solid fa-address-card app-logo"></i>
+						<i className="fa-solid fa-address-card app-logo"></i>
 					</NavLink>
 					&nbsp; Contact List
 				</div>

@@ -1,17 +1,37 @@
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { deleteContact } from "../actions";
+import { API_URL } from "../constants";
 
 export function ContactDetailsFunctional(props) {
 	const { contactId } = useParams();
-	console.log("contactId: ", contactId);
+	const navigate = useNavigate();
 	const contact = props.contactList.filter(
 		(contact) => String(contact.id) === contactId
 	)[0];
-	console.log("contact: ", contact);
+	const handleDelete = async (e) => {
+		e.preventDefault();
+		const url = `${API_URL}/${contactId}`;
+		await fetch(url, {
+			method: "DELETE",
+		})
+			.then((response) => {
+				if (response.ok) {
+					console.log("Data deleted successfully");
+					props.dispatch(deleteContact(contactId));
+					navigate("/");
+				} else {
+					console.log("Error deleting data");
+				}
+			})
+			.catch((error) => {
+				console.error("Error deleting data:", error);
+			});
+	};
 	return (
 		<div className="app-container">
 			<div className="contact-list-heading">
 				<NavLink to="/">
-					<i class="fa-solid fa-address-card app-logo"></i>
+					<i className="fa-solid fa-address-card app-logo"></i>
 				</NavLink>
 				&nbsp; Contact Details
 			</div>
@@ -76,10 +96,19 @@ export function ContactDetailsFunctional(props) {
 				</ul>
 			</div>
 
-			<button className="floating-add-contact">
+			<button className="floating-add-contact b-100">
 				<NavLink to={`/contact-edit/${contact.id}`} style={{ color: "white" }}>
 					<i className="fa-solid fa-pencil"></i>
 					&nbsp; Edit Contact
+				</NavLink>
+			</button>
+			<button
+				className="floating-add-contact b-200"
+				style={{ backgroundColor: "red" }}
+				onClick={handleDelete}>
+				<NavLink to={`/contact-edit/${contact.id}`} style={{ color: "white" }}>
+					<i className="fa-solid fa-trash"></i>
+					&nbsp; Delete Contact
 				</NavLink>
 			</button>
 		</div>

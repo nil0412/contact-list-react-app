@@ -1,15 +1,39 @@
 import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { API_URL } from "../constants";
+import { deleteContact } from "../actions/index";
 
 class Home extends React.Component {
+	constructor(props) {
+		super(props);
+		this.handleDelete = this.handleDelete.bind(this);
+	}
+	handleDelete = async (contactId) => {
+		const url = `${API_URL}/${contactId}`;
+		await fetch(url, {
+			method: "DELETE",
+		})
+			.then((response) => {
+				if (response.ok) {
+					console.log("Data deleted successfully");
+					this.props.dispatch(deleteContact(contactId));
+				} else {
+					console.log("Error deleting data");
+				}
+			})
+			.catch((error) => {
+				console.error("Error deleting data:", error);
+			});
+	};
+
 	render() {
 		const contactList = this.props.contactList;
 		return (
 			<div className="app-container">
 				<div className="contact-list-heading">
 					<NavLink to="/">
-						<i class="fa-solid fa-address-card app-logo"></i>
+						<i className="fa-solid fa-address-card app-logo"></i>
 					</NavLink>
 					&nbsp; Contact List
 				</div>
@@ -30,9 +54,10 @@ class Home extends React.Component {
 											<NavLink to={`/contact-edit/${contact.id}`}>
 												<i className="fa-solid fa-pencil"></i>
 											</NavLink>
-											<NavLink to={`/contact-delete/${contact.id}`}>
+											<button
+												onClick={() => this.handleDelete(`${contact.id}`)}>
 												<i className="fa-solid fa-trash"></i>
-											</NavLink>
+											</button>
 										</div>
 									</div>
 								</li>
@@ -40,8 +65,8 @@ class Home extends React.Component {
 						})}
 					</ul>
 				</div>
-				<button className="floating-add-contact">
-					<NavLink to="/create-contact"  style={{color:"white"}}>
+				<button className="floating-add-contact b-100">
+					<NavLink to="/create-contact" style={{ color: "white" }}>
 						<i className="fa-sharp fa-solid fa-circle-plus"></i>
 						&nbsp; Add Contact
 					</NavLink>
