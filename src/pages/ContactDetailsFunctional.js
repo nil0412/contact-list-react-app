@@ -67,7 +67,7 @@ export function ContactDetailsFunctional(props) {
 							<span className="sub-key">Geo: </span>
 							<span className="value">
 								{" "}
-								lat: ({contact.address.geo.lat}); lng:{contact.address.geo.lat}
+								lat: &nbsp; {contact.address.geo.lat}; &nbsp; &nbsp; lng: &nbsp; {contact.address.geo.lat}
 							</span>
 						</div>
 					</li>

@@ -270,3 +270,67 @@ li:nth-child(even) a{
 li:nth-child(even) a:hover{
 	color: red;
 }
+
+.contact-form{
+	margin-top: 120px;
+}
+
+/* Form Styles */
+.contact-form{
+	background-color: aqua;
+	width: 100%;
+	margin-top: 120px;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin: 0%;
+	margin-top: 100px;
+	padding: 0%;
+}
+.contact-form form{
+	background-color: rgb(146, 224, 159);
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.contact-form h4{
+	padding: 5px 10%;
+	font-size: 40px;
+	text-decoration:underline;
+}
+.contact-form h5{
+	padding: 5px 10%;
+	font-size: 25px;
+	font-weight: 500;
+}
+
+.contact-form form label{
+	padding: 5px 10%;
+	/* margin: 10%; */
+	width: 80%;
+	font-size: 20px;
+}
+.contact-form form label input{
+	margin-top: 5px;
+	width: 100%;
+	height: 30px;
+}
+.contact-form .form-submit-btn-container{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 30px;
+}
+.contact-form .form-submit-btn-container button{
+	font-size: 30px;
+	padding: 15px;
+	border-radius: 25px;
+	border: 5px solid white;
+	background-color: black;
+	color: white;
+	font-weight: bold;
+}
+.contact-form .form-submit-btn-container button:hover{
+	background-color: green;
+}
