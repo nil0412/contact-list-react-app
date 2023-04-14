@@ -72,6 +72,7 @@ class Home extends React.Component {
 					</NavLink>
 				</button>
 			</div>
+			
 		);
 	}
 }

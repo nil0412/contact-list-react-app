@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
 
 import { load_contacts_from_api } from "../actions";
 import { API_URL } from "../constants";
@@ -9,6 +10,7 @@ import Home from "../pages/Home";
 import ContactDetails from "../pages/ContactDetails";
 import CreateContact from "../pages/CreateContact";
 import ContactEdit from "../pages/ContactEdit";
+import { ToastContainer } from "react-toastify";
 
 class App extends React.Component {
 	constructor(props) {
@@ -35,6 +37,7 @@ class App extends React.Component {
 		return (
 			<div className="App">
 				<BrowserRouter>
+				<ToastContainer></ToastContainer>
 					<Routes>
 						<Route path="/" element={<Home />}></Route>
 						<Route
@@ -45,6 +48,7 @@ class App extends React.Component {
 							element={<ContactEdit />}></Route>
 						<Route path="/create-contact" element={<CreateContact />}></Route>
 					</Routes>
+					
 				</BrowserRouter>
 			</div>
 		);

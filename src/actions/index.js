@@ -1,9 +1,12 @@
+import { toast } from "react-toastify";
+import { toastStyle } from "../constants";
+
 //action types
 export const LOAD_CONTACTS_FROM_API = "LOAD_CONTACTS_FROM_API";
 export const DELETE_CONTACT_FROM_CONTACT_LIST =
 	"DELETE_CONTACT_FROM_CONTACT_LIST";
 export const CREATE_CONTACT = "CREATE_CONTACT";
-export const EDIT_CONTACT = 'EDIT_CONTACT';
+export const EDIT_CONTACT = "EDIT_CONTACT";
 
 //actions
 export const load_contacts_from_api = (contacts) => {
@@ -12,9 +15,6 @@ export const load_contacts_from_api = (contacts) => {
 			type: LOAD_CONTACTS_FROM_API,
 			contacts,
 		});
-		// toast.success("Contacts loaded successfully!!!", {
-		// 	autoClose: 1000,
-		// });
 	};
 };
 
@@ -24,9 +24,7 @@ export const deleteContact = (id) => {
 			type: DELETE_CONTACT_FROM_CONTACT_LIST,
 			id,
 		});
-		// toast.success("Contacts loaded successfully!!!", {
-		// 	autoClose: 1000,
-		// });
+		toast("Contact deleted successfully!", toastStyle);
 	};
 };
 
@@ -36,9 +34,7 @@ export const createContact = (contact) => {
 			type: CREATE_CONTACT,
 			contact,
 		});
-		// toast.success("Contacts loaded successfully!!!", {
-		// 	autoClose: 1000,
-		// });
+		toast("Contact created successfully!", toastStyle);
 	};
 };
 
@@ -48,8 +44,6 @@ export const editContact = (contact) => {
 			type: EDIT_CONTACT,
 			contact,
 		});
-		// toast.success("Contacts loaded successfully!!!", {
-		// 	autoClose: 1000,
-		// });
+		toast("Contact edited successfully!", toastStyle);
 	};
 };

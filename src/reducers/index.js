@@ -4,7 +4,6 @@ import {
 	EDIT_CONTACT,
 	LOAD_CONTACTS_FROM_API,
 } from "../actions";
-import { API_URL } from "../constants";
 
 const initialContactState = {
 	contactList: [],

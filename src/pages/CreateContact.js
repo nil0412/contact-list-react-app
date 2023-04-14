@@ -132,6 +132,7 @@ class CreateContact extends React.Component {
 								name="name"
 								value={this.state.name}
 								onChange={this.handleChange}
+								required
 							/>
 						</label>
 						<br />
@@ -143,6 +144,7 @@ class CreateContact extends React.Component {
 								name="username"
 								value={this.state.username}
 								onChange={this.handleChange}
+								required
 							/>
 						</label>
 						<br />
@@ -154,6 +156,7 @@ class CreateContact extends React.Component {
 								name="email"
 								value={this.state.email}
 								onChange={this.handleChange}
+								required
 							/>
 						</label>
 						<br />
@@ -165,6 +168,7 @@ class CreateContact extends React.Component {
 								name="phone"
 								value={this.state.phone}
 								onChange={this.handleChange}
+								required
 							/>
 						</label>
 						<br />
@@ -281,7 +285,9 @@ class CreateContact extends React.Component {
 							/>
 						</label>
 						<br />
-						<button type="submit">Add Contact</button>
+						<div className="form-submit-btn-container">
+					<button type="submit">Add Contact</button>
+					</div>
 					</form>
 				</div>
 			</div>
